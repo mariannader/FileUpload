@@ -1,0 +1,27 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+        {
+        <span>Select File: </span>
+        <input type="file" name="postedFile" />
+        <input type="submit" value="Upload" />
+        }
+        <hr />
+        <table>
+            @foreach (var item in Model) { 
+            <tr>
+                <td>@item.FileId</td>
+                <td>@item.Name</td>
+                <td>@Html.ActionLink("Download","Download","Home",new { id = item.FileId }, null)</td>
+            </tr>
+            } 
+        </table>
+    </div>
+</body>
+</html>
